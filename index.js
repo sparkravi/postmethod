@@ -16,8 +16,8 @@ res.send("server is started")
 })
 app.post("/newData",(req,res)=>{
     //const name=req.body.name ,,,age=req.body.age
-    const {name,password,mobile}=req.body;
-    console.log(name,password)
+    const {name,password,list,gender}=req.body;
+    console.log(name,password,list,gender)
     res.send("add")
 })
 

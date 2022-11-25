@@ -7,52 +7,82 @@
     <title>Document</title>
     <style>
         body{
-            background-image: url(https://cdn.pixabay.com/photo/2021/06/29/06/14/water-drops-6373296__340.jpg);
+            background-image: url(https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80);
             background-image: no-repeat;
             background-size: cover;
             text-align: center;
-            padding: 20%;
+            padding: 18%;
+            background-attachment: fixed;
         }
         #username{
                 border-radius: 25px;
                 text-align: center;
-                width: 50%;
+                width: 45%;
                 padding-top: 1%;
                 padding-bottom: 1%;
             }
         #password{
             border-radius: 25px;
                 text-align: center;
-                width: 25%;
+                width: 28%;
                 padding-top: 1%;
                 padding-bottom: 1%;
         } 
         .btn{
             border-radius: 25px;
                 text-align: center;
-                width: 14%;
+                width: 12%;
                 padding-top: 1%;
                 padding-bottom: 1%; 
                 background-color: blue; 
                 color: white;
-        }   
+        } 
+        #list{
+            border-radius: 25px;
+                text-align: center;
+                background-color: antiquewhite;
+                padding-top: 1%;
+                padding-bottom: 1%;
+                width: 12%;         
+        } 
+        BODY h1{
+            text-align: center;
+            font-size: 60px;
+        } 
     </style>
 </head>
 
 <body>
+    <h1>LOGIN PAGE</h1>
     <p></p><input id="username" placeholder="enter your name"/></p>
-    </p><input id="password" placeholder="enter password"/> </p>   
+    </p><input id="password" placeholder="enter password"/> </p>  
+    <select id="list" >
+        <option>select an option</option>
+        <option>sneakers for mens</option>
+        <option>huddy for mens and womens</option>
+        <option>kichen glocerris</option>
+        <option>hrx t-shirt</option>
+    </select> 
+    <p><label></label><input type="radio"  id="male" value="male" name="gender" />male</label>
+   <label></label> <input type="radio" id="female" value="female" name="gender"/>female</label>
+    </p>
+
     <script>
         function output(){
             var username=document.getElementById("username").value,
-            password=document.getElementById("password").value
-            console.log(username,password)
+            password=document.getElementById("password").value,
+            list=document.getElementById("list").value
+           var male=document.getElementById("male").checked
+           var female=document.getElementById("female").checked
+            console.log(username,password,list,gender)
+            if(male==true) var gender="male"
+            else var gender="female"
             fetch("http://localhost:3000/newData",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
                 },
-                body:JSON.stringify({name:username ,password:password,mobile:6309642803})
+                body:JSON.stringify({name:username ,password:password,list:list,gender:gender})
             })
             .then((res)=>{
                 console.log(res)
